@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Net;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading;
 using HyperLink;
-using System.IO;
-using System.Linq;
 
 namespace Main
 {
@@ -24,12 +19,16 @@ namespace Main
 
         static void Main(string[] args)
         {
+            // create new server instance
             Server server = new Server();
 
+            // add routes for static files
             server.Router.ServeFile("/", @"Public\index.html");
             server.Router.ServeFile("/styles.css", @"Public\styles.css");
             server.Router.ServeFile("/script.js", @"Public\script.js");
+            server.Router.ServeFile("/favicon.ico", @"Public\favicon.ico");
 
+            // Api endpoint that returns the current time
             server.Router.AddRoute("GET", "/time", (req, res) =>
             {
                 res.ContentType = "application/json";
@@ -37,6 +36,7 @@ namespace Main
                 res.OutputStream.Close();
             });
 
+            // start the server
             server.Listen(3000);
 
             

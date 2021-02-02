@@ -7,11 +7,15 @@
 
   <ItemGroup>
     <None Remove="index.html" />
+    <None Remove="Public\favicon.ico" />
     <None Remove="Public\script.js" />
     <None Remove="Public\styles.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Public\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Public\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

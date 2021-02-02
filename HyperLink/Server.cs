@@ -26,12 +26,19 @@ namespace HyperLink
             Router = new RequestRouter();
         }
 
+        /// <summary>
+        /// Stop the server running
+        /// </summary>
         public void Close()
         {
             Listener.Close();
             Running = false;
         }
 
+        /// <summary>
+        /// Start listening for requests
+        /// </summary>
+        /// <param name="port">port</param>
         public void Listen(ushort port = 3000) {
 
             Listener.Prefixes.Add("http://localhost:" + port.ToString() + "/");
